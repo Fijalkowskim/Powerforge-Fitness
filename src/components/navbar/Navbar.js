@@ -1,12 +1,13 @@
 import React from "react";
 import { IoIosFitness } from "react-icons/io";
 import NavbarLink from "./NavbarLink";
+import { IoCartOutline } from "react-icons/io5";
 const navlinks = [
   { name: "Home", to: "/" },
-  { name: "Workouts", to: "/" },
-  { name: "Products", to: "/" },
-  { name: "About", to: "/" },
-  { name: "Contact us", to: "/" },
+  { name: "Workouts", to: "/workouts" },
+  { name: "Products", to: "/products" },
+  { name: "About", to: "/about" },
+  { name: "Contact us", to: "/contact" },
 ];
 function Navbar() {
   return (
@@ -18,6 +19,7 @@ function Navbar() {
       {navlinks.map((n) => (
         <NavbarLink name={n.name} to={n.to} />
       ))}
+      <IoCartOutline />
     </div>
   );
 }
