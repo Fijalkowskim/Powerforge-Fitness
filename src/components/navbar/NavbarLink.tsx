@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-
-function NavbarLink(props) {
+interface Props {
+  to: string;
+  name: string;
+}
+function NavbarLink(props: Props) {
   const { pathname } = useLocation();
   const [active, setActive] = useState(false);
   useEffect(() => {
