@@ -1,11 +1,13 @@
 import React from "react";
 import { IoIosFitness } from "react-icons/io";
 import NavbarLink from "./NavbarLink";
-import { IoCartOutline } from "react-icons/io5";
+import { motion } from "framer-motion";
+import CustomButton from "../general/CustomButton";
 const navlinks = [
   { name: "Home", to: "/" },
   { name: "Workouts", to: "/workouts" },
-  { name: "Products", to: "/products" },
+  { name: "Progress tracker", to: "/tracker" },
+  { name: "BMI Calculator", to: "/bmi" },
   { name: "About", to: "/about" },
   { name: "Contact us", to: "/contact" },
 ];
@@ -19,7 +21,9 @@ function Navbar() {
       {navlinks.map((n) => (
         <NavbarLink name={n.name} to={n.to} />
       ))}
-      <IoCartOutline />
+      <CustomButton className="font-primary font-semibold">
+        Sing in
+      </CustomButton>
     </div>
   );
 }

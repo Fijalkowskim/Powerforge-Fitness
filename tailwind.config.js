@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         accent: ["Kanit", "sans-serif"],
-        primary: ["Yantramanav", "sans-serif"],
+        primary: ["Hind Siliguri", "sans-serif"],
       },
       colors: {
         text: {
