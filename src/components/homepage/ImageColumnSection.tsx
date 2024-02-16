@@ -1,12 +1,14 @@
 import React from "react";
 
 import CustomButton from "../general/CustomButton";
+import { Link } from "react-router-dom";
 interface Props {
   imageSource: string;
   imageAlt: string;
   header: string;
   subheader: string;
   buttonText: string;
+  buttonLinkTo: string;
   invertedColumn?: boolean;
 }
 function ImageColumnSection(props: Props) {
@@ -23,7 +25,7 @@ function ImageColumnSection(props: Props) {
         <h1 className="font-accent text-6xl text-action-500">{props.header}</h1>
         <p className="max-w-[70%] tracking-wide">{props.subheader}</p>
         <CustomButton variant={"darker"} className="w-60 py-2">
-          {props.buttonText}
+          <Link to={props.buttonLinkTo}>{props.buttonText}</Link>
         </CustomButton>
       </div>
     </div>

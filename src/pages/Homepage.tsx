@@ -13,6 +13,7 @@ function Homepage() {
         header="Track your progress"
         subheader="Embark on a journey of self-improvement with our Progress Tracker. Set personalized goals, analyze insightful graphs, and witness your development over time. Take charge of your fitness and personal growth."
         buttonText="Progress tracker"
+        buttonLinkTo="/tracker"
       />
       <ImageColumnSection
         imageSource={WeightImage}
@@ -20,6 +21,7 @@ function Homepage() {
         header="Calculate bmi"
         subheader="Take control of your health with our BMI Calculator. Understand your body mass index, set realistic fitness goals, and monitor your progress on your journey to a healthier you."
         buttonText="BMI Calculator"
+        buttonLinkTo="/bmi"
         invertedColumn={true}
       />
     </div>
