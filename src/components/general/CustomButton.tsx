@@ -10,6 +10,8 @@ const variants = cva(
       variant: {
         default:
           "from-action-400 to-action-500 hover:opacity-90 text-primary-950 bg-gradient-to-br",
+        darker:
+          "from-action-500 to-action-600 hover:opacity-90 text-primary-950 bg-gradient-to-br",
       },
     },
     defaultVariants: {
@@ -37,7 +39,7 @@ function CustomButton({
 }: Props) {
   return (
     <motion.button
-      whileHover={disableScaleAnimation ? {} : { scale: 1.05 }}
+      whileHover={disableScaleAnimation ? {} : { scale: 1.03 }}
       whileTap={disableScaleAnimation ? {} : { scale: 1.01 }}
       className=""
     >

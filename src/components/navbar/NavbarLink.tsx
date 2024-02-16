@@ -14,8 +14,8 @@ function NavbarLink(props: Props) {
   return (
     <motion.button
       className={`uppercase transition-colors hover:text-action-300 ${active && "text-action-300"}`}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 1.02 }}
+      whileHover={{ scale: 1.03 }}
+      whileTap={{ scale: 1.01 }}
     >
       <Link to={props.to}>{props.name}</Link>
     </motion.button>

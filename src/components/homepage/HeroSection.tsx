@@ -18,7 +18,9 @@ function HeroSection() {
           Explore our workouts, track your progress and become better version of
           yourself
         </p>
-        <CustomButton className="py-2">Explore workouts</CustomButton>
+        <CustomButton variant={"darker"} className="py-2">
+          Check workouts
+        </CustomButton>
       </div>
     </div>
   );
