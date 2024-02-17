@@ -24,9 +24,11 @@ function ImageColumnSection(props: Props) {
       <div className="flex w-1/2 flex-col items-center justify-center gap-2 text-center uppercase text-primary-50">
         <h1 className="font-accent text-6xl text-action-500">{props.header}</h1>
         <p className="max-w-[70%] tracking-wide">{props.subheader}</p>
-        <CustomButton variant={"darker"} className="w-60 py-2">
-          <Link to={props.buttonLinkTo}>{props.buttonText}</Link>
-        </CustomButton>
+        <Link to={props.buttonLinkTo}>
+          <CustomButton variant={"darker"} className="w-60 py-2">
+            {props.buttonText}
+          </CustomButton>
+        </Link>
       </div>
     </div>
   );

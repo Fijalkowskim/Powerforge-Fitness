@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer";
 import BMIPage from "./pages/BMIPage";
 import ScrollToTop from "./helpers/ScrollToTop";
 import Background from "./components/general/Background";
+import WorkoutsPage from "./pages/WorkoutsPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/bmi" element={<BMIPage />} />
+          <Route path="/workouts" element={<WorkoutsPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>

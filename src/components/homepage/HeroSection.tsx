@@ -1,6 +1,7 @@
 import React from "react";
 import HeroImage from "../../images/HeroImage.jpg";
 import CustomButton from "../general/CustomButton";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
   return (
@@ -18,9 +19,11 @@ function HeroSection() {
           Explore our workouts, track your progress and become better version of
           yourself
         </p>
-        <CustomButton variant={"darker"} className="py-2">
-          Check workouts
-        </CustomButton>
+        <Link to="/workouts">
+          <CustomButton variant={"darker"} className="py-2">
+            Check workouts
+          </CustomButton>
+        </Link>
       </div>
     </div>
   );
