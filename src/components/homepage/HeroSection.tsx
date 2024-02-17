@@ -4,7 +4,7 @@ import CustomButton from "../general/CustomButton";
 
 function HeroSection() {
   return (
-    <div>
+    <div className="relative snap-center">
       <img
         src={HeroImage}
         alt="Gym"

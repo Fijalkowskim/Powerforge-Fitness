@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-background-50 font-primary;
+  @apply bg-primary-900 font-primary;
 }

@@ -14,7 +14,7 @@ interface Props {
 function ImageColumnSection(props: Props) {
   return (
     <div
-      className={`flex h-screen w-full flex-row items-center justify-between bg-primary-900/95 px-10 ${props.invertedColumn === true && "flex-row-reverse"}`}
+      className={`flex h-screen w-full snap-center flex-row items-center justify-between  px-10 ${props.invertedColumn === true && "flex-row-reverse"}`}
     >
       <img
         className="h-2/3 w-1/2 rounded-md object-cover shadow-2xl drop-shadow-2xl grayscale"

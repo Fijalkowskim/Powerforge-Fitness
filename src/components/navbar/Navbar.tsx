@@ -8,7 +8,7 @@ const navlinks = [
   { name: "Progress tracker", to: "/tracker" },
   { name: "BMI Calculator", to: "/bmi" },
   { name: "About", to: "/about" },
-  { name: "Contact us", to: "/contact" },
+  { name: "Contact", to: "/contact" },
 ];
 function Navbar() {
   return (
