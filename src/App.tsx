@@ -6,10 +6,16 @@ import BMIPage from "./pages/BMIPage";
 import ScrollToTop from "./helpers/ScrollToTop";
 import Background from "./components/general/Background";
 import WorkoutsPage from "./pages/WorkoutsPage";
+import { useSettingsContext } from "./context/SettingsContext";
+import { useEffect } from "react";
 
 function App() {
+  const { disableScroll } = useSettingsContext();
+  useEffect(() => {
+    document.body.style.overflow = disableScroll ? "hidden" : "unset";
+  }, [disableScroll]);
   return (
-    <div className="relative h-full w-full scroll-smooth">
+    <div className={`relative h-full w-full scroll-smooth`}>
       <Background />
       <BrowserRouter>
         <ScrollToTop />

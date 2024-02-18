@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+html {
+  scrollbar-gutter: stable;
+}
 body {
   @apply bg-primary-900 font-primary;
 }

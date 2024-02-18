@@ -4,8 +4,9 @@ import { FaDotCircle } from "react-icons/fa";
 import { motion } from "framer-motion";
 interface Props {
   workout: WorkoutData;
+  onClick?: (workout: WorkoutData) => void;
 }
-function WorkoutCard({ workout }: Props) {
+function WorkoutCard({ workout, onClick }: Props) {
   const difficulty =
     workout.difficulty > 5
       ? 5
@@ -19,6 +20,9 @@ function WorkoutCard({ workout }: Props) {
         transition: { type: "spring", stiffness: 400, damping: 20, mass: 1 },
       }}
       whileTap={{ scale: 1.01 }}
+      onClick={() => {
+        if (onClick) onClick(workout);
+      }}
       className="group relative flex aspect-square w-96 flex-shrink-0 cursor-pointer flex-col items-start justify-end  border-2 border-primary-950/30 p-2 shadow-lg"
     >
       <img
