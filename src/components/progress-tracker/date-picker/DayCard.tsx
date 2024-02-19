@@ -7,6 +7,9 @@ interface Props {
 function DayCard(props: Props) {
   return (
     <motion.button
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      exit={{ scale: 0 }}
       whileHover={{ borderRadius: "10px" }}
       className="relative col-span-1 aspect-square overflow-hidden rounded-md border-action-500  bg-primary-950 text-center opacity-90 shadow-sm transition-opacity hover:border-[0.1px] hover:opacity-100"
     >

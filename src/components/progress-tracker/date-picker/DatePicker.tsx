@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { daysInMonth } from "../../../helpers/helpers";
 import DayCard from "./DayCard";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import { AnimatePresence, motion } from "framer-motion";
 interface MonthData {
   month: number;
   year: number;
@@ -26,18 +28,46 @@ function DatePicker() {
   });
   return (
     <div className="mt-14 flex flex-col items-start justify-center gap-2 bg-primary-950/50 p-3 text-2xl text-primary-50 shadow-md">
-      <h1>
-        {monthNames[monthData.month]} {monthData.year}
-      </h1>
-      <div className="grid w-[500px] grid-cols-7 gap-2">
-        {[...Array(daysInMonth(monthData.month + 1, monthData.year))].map(
-          (_, dayIndex) => (
-            <DayCard
-              key={dayIndex + 1}
-              date={new Date(monthData.year, monthData.month, dayIndex + 1)}
-            />
-          ),
-        )}
+      <div className="flex w-full items-center justify-between">
+        <motion.button
+          whileHover={{ x: -1 }}
+          onClick={() => {
+            setMonthData((prev) =>
+              prev.month === 0
+                ? { month: 11, year: prev.year - 1 }
+                : { month: prev.month - 1, year: prev.year },
+            );
+          }}
+        >
+          <FaAngleDoubleLeft />
+        </motion.button>
+        <h1 className="text-center">
+          {monthNames[monthData.month]} {monthData.year}
+        </h1>
+        <motion.button
+          whileHover={{ x: 1 }}
+          onClick={() => {
+            setMonthData((prev) =>
+              prev.month === 11
+                ? { month: 0, year: prev.year + 1 }
+                : { month: prev.month + 1, year: prev.year },
+            );
+          }}
+        >
+          <FaAngleDoubleRight />
+        </motion.button>
+      </div>
+      <div className="grid w-[500px] grid-cols-7 grid-rows-5 gap-2">
+        <AnimatePresence>
+          {[...Array(daysInMonth(monthData.month + 1, monthData.year))].map(
+            (_, dayIndex) => (
+              <DayCard
+                key={dayIndex + 1}
+                date={new Date(monthData.year, monthData.month, dayIndex + 1)}
+              />
+            ),
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
