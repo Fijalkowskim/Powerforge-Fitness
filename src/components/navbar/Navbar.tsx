@@ -1,7 +1,6 @@
 import React from "react";
 import { IoIosFitness } from "react-icons/io";
 import NavbarLink from "./NavbarLink";
-import CustomButton from "../general/CustomButton";
 const navlinks = [
   { name: "Home", to: "/" },
   { name: "Workouts", to: "/workouts" },
@@ -19,9 +18,6 @@ function Navbar() {
       {navlinks.map((n) => (
         <NavbarLink name={n.name} to={n.to} />
       ))}
-      {/* <CustomButton className="font-primary font-semibold">
-        Sing in
-      </CustomButton> */}
     </div>
   );
 }

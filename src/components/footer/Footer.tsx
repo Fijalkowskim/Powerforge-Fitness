@@ -16,6 +16,7 @@ function Footer() {
           className="cursor-pointer transition-colors hover:text-primary-50"
           target="_blank"
           href="https://github.com/Fijalkowskim/Powerforge-Fitness"
+          rel="noreferrer"
         >
           <FaGithub />
         </a>
@@ -23,6 +24,7 @@ function Footer() {
           className="cursor-pointer transition-colors hover:text-primary-50"
           target="_blank"
           href="https://www.linkedin.com/in/mateusz-fija%C5%82kowski-a880742b5/"
+          rel="noreferrer"
         >
           <CiLinkedin />
         </a>

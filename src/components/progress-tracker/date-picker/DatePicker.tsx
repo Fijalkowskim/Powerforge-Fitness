@@ -3,6 +3,7 @@ import { daysInMonth } from "../../../helpers/helpers";
 import DayCard from "./DayCard";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTrackerContext } from "../../../context/TrackerContext";
 interface MonthData {
   month: number;
   year: number;
@@ -22,12 +23,14 @@ const monthNames = [
   "December",
 ];
 function DatePicker() {
+  const currentDate = new Date();
   const [monthData, setMonthData] = useState<MonthData>({
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
   });
+  const { GetWeight } = useTrackerContext();
   return (
-    <div className="mt-14 flex flex-col items-start justify-center gap-2 bg-primary-950/50 p-3 text-2xl text-primary-50 shadow-md">
+    <div className=" flex flex-col items-start justify-center gap-2 bg-primary-950/50 p-3 text-2xl normal-case text-primary-50 shadow-md">
       <div className="flex w-full items-center justify-between">
         <motion.button
           whileHover={{ x: -1 }}
@@ -45,6 +48,7 @@ function DatePicker() {
           {monthNames[monthData.month]} {monthData.year}
         </h1>
         <motion.button
+          className={`${monthData.year >= currentDate.getFullYear() && monthData.month >= currentDate.getMonth() && "pointer-events-none opacity-0"}`}
           whileHover={{ x: 1 }}
           onClick={() => {
             setMonthData((prev) =>
@@ -60,12 +64,20 @@ function DatePicker() {
       <div className="grid w-[500px] grid-cols-7 grid-rows-5 gap-2">
         <AnimatePresence>
           {[...Array(daysInMonth(monthData.month + 1, monthData.year))].map(
-            (_, dayIndex) => (
-              <DayCard
-                key={dayIndex + 1}
-                date={new Date(monthData.year, monthData.month, dayIndex + 1)}
-              />
-            ),
+            (_, dayIndex) => {
+              const date = new Date(
+                monthData.year,
+                monthData.month,
+                dayIndex + 1,
+              );
+              return (
+                <DayCard
+                  key={dayIndex + 1}
+                  date={date}
+                  weight={GetWeight(date)}
+                />
+              );
+            },
           )}
         </AnimatePresence>
       </div>
