@@ -7,7 +7,6 @@ const navlinks = [
   { name: "Workouts", to: "/workouts" },
   { name: "Progress tracker", to: "/tracker" },
   { name: "BMI Calculator", to: "/bmi" },
-  { name: "About", to: "/about" },
   { name: "Contact", to: "/contact" },
 ];
 function Navbar() {
@@ -20,9 +19,9 @@ function Navbar() {
       {navlinks.map((n) => (
         <NavbarLink name={n.name} to={n.to} />
       ))}
-      <CustomButton className="font-primary font-semibold">
+      {/* <CustomButton className="font-primary font-semibold">
         Sing in
-      </CustomButton>
+      </CustomButton> */}
     </div>
   );
 }

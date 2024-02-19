@@ -24,7 +24,7 @@ function WorkoutDetails({ workout, onExit }: Props) {
         className="absolute inset-0 h-full w-full bg-black/60"
         onClick={onExit}
       />
-      <div className="relative z-10 flex w-fit max-w-[80%] flex-col items-start justify-start gap-1 border-2 border-action-500 bg-primary-950 p-3 leading-normal shadow-lg">
+      <div className="container relative z-10 flex max-w-[60%] flex-col items-start justify-start gap-1 border-2 border-action-500 bg-primary-950 p-3 leading-normal shadow-lg">
         <h1 className=" font-accent text-4xl text-action-500">
           {workout.name}
         </h1>
@@ -62,7 +62,7 @@ function WorkoutDetails({ workout, onExit }: Props) {
         </ul>
         <button
           onClick={onExit}
-          className="absolute right-3 top-3 origin-center rounded-md bg-action-500 px-4 py-1 font-primary text-xl font-bold text-primary-950 transition-opacity hover:opacity-80"
+          className="absolute right-3 top-3 z-10 origin-center rounded-md bg-action-500 px-4 py-1 font-primary text-xl font-bold text-primary-950 transition-opacity hover:opacity-80"
         >
           X
         </button>
