@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import DatePicker from "../components/progress-tracker/date-picker/DatePicker";
 import ProgressChart from "../components/progress-tracker/ProgressChart";
+import { useTrackerContext } from "../context/TrackerContext";
+import { AnimatePresence } from "framer-motion";
+import ProgressForm from "../components/progress-tracker/ProgressForm";
 function ProgressPage() {
+  const { pickedDate } = useTrackerContext();
   return (
-    <div className=" flex min-h-screen flex-col items-center justify-start uppercase text-primary-50">
+    <div className="relative flex min-h-screen flex-col items-center justify-start uppercase text-primary-50">
       <h1 className="mt-20 font-accent text-6xl text-action-500">
         Track your weight
       </h1>
@@ -15,6 +19,7 @@ function ProgressPage() {
         <DatePicker />
         <ProgressChart />
       </div>
+      <AnimatePresence>{pickedDate && <ProgressForm />}</AnimatePresence>
     </div>
   );
 }

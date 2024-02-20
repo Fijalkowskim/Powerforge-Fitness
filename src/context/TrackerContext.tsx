@@ -9,6 +9,8 @@ interface TrackerContextProps {
   progressData: ProgressData[];
   AddProgress: (newData: ProgressData) => void;
   GetWeight: (date: Date) => number | undefined;
+  pickedDate: Date | undefined;
+  setPickedDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
 }
 const TraclerContext = createContext({} as TrackerContextProps);
 
@@ -20,13 +22,14 @@ export function TrackerContextProvider({
   children,
 }: TrackerContextProviderProps) {
   const [progressData, setProgressData] = useState<ProgressData[]>([]);
+  const [pickedDate, setPickedDate] = useState<Date | undefined>(undefined);
   const AddProgress = (newData: ProgressData) => {
     const oldData = progressData.find((p) =>
       compareDates(p.date, newData.date),
     );
     if (oldData) {
       setProgressData((prev) =>
-        prev.map((p) => (p.date === newData.date ? newData : p)),
+        prev.map((p) => (compareDates(p.date, newData.date) ? newData : p)),
       );
     } else {
       const newProgressData = [...progressData, newData];
@@ -42,7 +45,15 @@ export function TrackerContextProvider({
     return progress ? progress.weight : undefined;
   };
   return (
-    <TraclerContext.Provider value={{ progressData, AddProgress, GetWeight }}>
+    <TraclerContext.Provider
+      value={{
+        progressData,
+        AddProgress,
+        GetWeight,
+        pickedDate,
+        setPickedDate,
+      }}
+    >
       {children}
     </TraclerContext.Provider>
   );

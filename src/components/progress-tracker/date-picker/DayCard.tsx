@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useTrackerContext } from "../../../context/TrackerContext";
 interface Props {
@@ -7,12 +7,13 @@ interface Props {
 }
 function DayCard(props: Props) {
   const disabled = props.date > new Date();
-  const { AddProgress } = useTrackerContext();
+
+  const { setPickedDate } = useTrackerContext();
   return (
     <motion.button
       onClick={() => {
         if (disabled) return;
-        AddProgress({ weight: 80, date: props.date });
+        setPickedDate(props.date);
       }}
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
