@@ -28,7 +28,7 @@ function Navbar() {
   }, [isInView, isMobileMenuOpen]);
   return (
     <div
-      className={`fixed left-0 top-0 z-20 flex w-screen flex-row items-center justify-center gap-8 bg-primary-900 px-4 py-3 text-primary-50 shadow-md sm:px-20 xl:px-40`}
+      className={`fixed left-0 top-0 z-20 flex w-screen flex-row items-center justify-center gap-8 bg-primary-900 px-5 py-3 text-primary-50 shadow-md sm:px-20 xl:px-40`}
     >
       <div className="pointer-events-none mr-auto flex items-center justify-center gap-1 text-center font-accent text-lg font-light">
         <IoIosFitness className="text-2xl text-action-400" />
@@ -52,7 +52,12 @@ function Navbar() {
       {/* Hamburger menu */}
       <AnimatePresence>
         {isInView && isMobileMenuOpen && (
-          <motion.div className="absolute left-0 top-0 z-50 h-screen w-screen overflow-hidden bg-black/40">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute left-0 top-0 z-50 h-screen w-screen overflow-hidden bg-black/40"
+          >
             <div
               className="absolute inset-0"
               onClick={(e) => {

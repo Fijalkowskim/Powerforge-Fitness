@@ -25,6 +25,7 @@ function Homepage() {
         buttonText="BMI Calculator"
         buttonLinkTo="/bmi"
         invertedColumn={true}
+        imageDarken={70}
       />
     </div>
   );

@@ -60,9 +60,13 @@ function HeroSection() {
         initial={{ opacity: firstLoad ? 0 : 1 }}
         className="absolute left-1/2 top-1/2 flex -translate-x-[50%] -translate-y-[50%] flex-col items-center justify-center text-center font-accent uppercase text-primary-50"
       >
-        <h2 className="text-3xl font-thin">Build your strength with</h2>
-        <h1 className="text-6xl tracking-wide">Powerforge fitness</h1>
-        <p className="mb-2 mt-3 max-w-[70%] font-primary font-light tracking-wide text-primary-200">
+        <h2 className="text-xl font-thin sm:text-3xl">
+          Build your strength with
+        </h2>
+        <h1 className="text-5xl tracking-wide sm:text-6xl">
+          Powerforge fitness
+        </h1>
+        <p className="mb-2 mt-3 font-primary text-sm font-light tracking-wide text-primary-200 sm:text-base lg:max-w-[70%]">
           Explore our workouts, track your progress and become better version of
           yourself
         </p>
