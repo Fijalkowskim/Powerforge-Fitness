@@ -1,39 +1,107 @@
 import React, { useEffect, useState } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Chart } from "react-chartjs-2";
-import { CategoryScale } from "chart.js";
+import { CategoryScale, scales } from "chart.js";
 import { useTrackerContext } from "../../context/TrackerContext";
+
+enum ChartType {
+  Last30Days,
+  Last90Days,
+}
 
 function ProgressChart() {
   ChartJS.register(CategoryScale);
-  const { progressData } = useTrackerContext();
+  const currentDate = new Date();
+  const { progressData, GetWeight } = useTrackerContext();
   const [labels, setLabels] = useState<string[]>([]);
-  const [data, setData] = useState<number[]>([]);
+  const [data, setData] = useState<(number | undefined)[]>([]);
+  const [chartType, setChartType] = useState<ChartType>(ChartType.Last30Days);
 
   useEffect(() => {
     const newLabels: string[] = [];
-    const newData: number[] = [];
-    progressData.forEach((d) => {
-      newLabels.push(d.date.toDateString());
-      newData.push(d.weight);
-    });
+    const newData: (number | undefined)[] = [];
+    const days = chartType === ChartType.Last30Days ? 30 : 90;
+    for (let i = days; i >= 0; i--) {
+      const newDate: Date = new Date(currentDate);
+      newDate.setDate(currentDate.getDate() - i);
+      const year = newDate.getFullYear().toString().slice(-2);
+      const month = (newDate.getMonth() + 1).toString().padStart(2, "0");
+      const day = newDate.getDate().toString().padStart(2, "0");
+      newLabels.push(`${day}.${month}.${year}`);
+      newData.push(GetWeight(newDate));
+    }
     setLabels(newLabels);
     setData(newData);
-  }, [progressData]);
+  }, [progressData, chartType]);
   return (
-    <div className="aspect-square w-[500px]">
-      <Chart
-        type={"line"}
-        data={{
-          labels: labels,
-          datasets: [
-            {
-              label: "Last 30 days weight",
-              data: data,
-            },
-          ],
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-action-500">Choose chart type</h1>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
         }}
-      />
+      >
+        <div className="flex items-center justify-center gap-5">
+          <label className="flex cursor-pointer flex-col items-center justify-center text-sm opacity-90">
+            Last 30 days
+            <input
+              type="radio"
+              name="chartType"
+              checked={chartType === ChartType.Last30Days}
+              onChange={() => {
+                setChartType(ChartType.Last30Days);
+              }}
+            />
+          </label>
+          <label className="flex cursor-pointer flex-col items-center justify-center text-sm opacity-90">
+            Last 90 days
+            <input
+              type="radio"
+              name="chartType"
+              checked={chartType === ChartType.Last90Days}
+              onChange={() => {
+                setChartType(ChartType.Last90Days);
+              }}
+            />
+          </label>
+        </div>
+      </form>
+      <div className="mt-2 aspect-square w-[500px]">
+        <Chart
+          type={"line"}
+          data={{
+            labels: labels,
+            datasets: [
+              {
+                label:
+                  chartType === ChartType.Last30Days
+                    ? "Last 30 days weight"
+                    : "Last 90 days weight",
+                data: data,
+                borderColor: "#e4bf1b",
+                spanGaps: true,
+              },
+            ],
+          }}
+          options={{
+            maintainAspectRatio: false,
+            aspectRatio: 1,
+            responsive: true,
+            scales: {
+              x: {
+                ticks: {
+                  color: "white",
+                },
+              },
+              y: {
+                ticks: {
+                  color: "white",
+                },
+              },
+            },
+          }}
+        />
+      </div>
     </div>
   );
 }
