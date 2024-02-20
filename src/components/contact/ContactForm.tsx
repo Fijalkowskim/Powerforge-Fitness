@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import { AnimatePresence, motion, useAnimate } from "framer-motion";
-
+import React, { useState, useRef } from "react";
+import { motion, useAnimate } from "framer-motion";
+import emailjs from "@emailjs/browser";
 function ContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [scope, animate] = useAnimate();
+  const form = useRef<HTMLFormElement>(null);
+
   const sentAnimation = async () => {
     if (!scope.current) return;
     animate(scope.current, { opacity: 1 }, { duration: 0.2 }).then(() => {
@@ -14,9 +16,28 @@ function ContactForm() {
   };
   return (
     <form
+      ref={form}
       onSubmit={(e) => {
         e.preventDefault();
-        if (name === "" || email === "" || message === "") return;
+        if (name === "" || email === "" || message === "" || form === null)
+          return;
+        try {
+          emailjs
+            .sendForm(
+              process.env.REACT_APP_SERVICE_ID as string,
+              process.env.REACT_APP_TEMPLATE_ID as string,
+              form.current as HTMLFormElement,
+              {
+                publicKey: process.env.REACT_APP_PUBLIC_KEY as string,
+              },
+            )
+            .then(() => {
+              console.log("SUCCESS!");
+            });
+        } catch (error) {
+          console.log("FAILED...", error);
+        }
+
         setName("");
         setEmail("");
         setMessage("");
@@ -27,6 +48,7 @@ function ContactForm() {
       <label>Your name</label>
       <input
         type="text"
+        name="user_name"
         placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -36,6 +58,7 @@ function ContactForm() {
       <label>Your email</label>
       <input
         type="email"
+        name="user_email"
         placeholder="youremail@gmail.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
@@ -44,6 +67,7 @@ function ContactForm() {
       />
       <label>Your message</label>
       <textarea
+        name="message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         required
