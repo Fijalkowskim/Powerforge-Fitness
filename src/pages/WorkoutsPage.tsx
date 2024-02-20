@@ -12,11 +12,11 @@ function WorkoutsPage() {
   const { setDisableScroll } = useSettingsContext();
   return (
     <div
-      className={`relative mb-10 flex min-h-screen flex-col items-center justify-start gap-4  pt-20 uppercase text-primary-50 
+      className={`relative mb-10 flex min-h-screen flex-col items-center justify-start gap-4 pt-20  text-center uppercase text-primary-50 
       `}
     >
       <h1
-        className="font-accent text-6xl  tracking-wide text-action-500 drop-shadow-lg"
+        className="font-accent text-5xl tracking-wide  text-action-500 drop-shadow-lg sm:text-6xl"
         style={{ textShadow: "1px 1px black" }}
       >
         Our workouts

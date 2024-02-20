@@ -23,7 +23,7 @@ function WorkoutCard({ workout, onClick }: Props) {
       onClick={() => {
         if (onClick) onClick(workout);
       }}
-      className="group relative flex aspect-square w-96 flex-shrink-0 cursor-pointer flex-col items-start justify-end  border-2 border-primary-950/30 p-2 shadow-lg"
+      className="group relative flex aspect-square w-80 flex-shrink-0 cursor-pointer flex-col items-start justify-end border-2  border-primary-950/30 p-2 shadow-lg sm:w-96"
     >
       <img
         src={workout.image}
