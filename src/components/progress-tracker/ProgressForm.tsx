@@ -49,6 +49,7 @@ function ProgressForm() {
         <input
           placeholder="Weight (kg)"
           type="number"
+          autoFocus
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
           required

@@ -8,6 +8,7 @@ interface SettingsContextProps {
   setDisableScroll: React.Dispatch<React.SetStateAction<boolean>>;
   firstLoad: boolean;
   setFirstLoad: React.Dispatch<React.SetStateAction<boolean>>;
+  apiConnected: boolean;
 }
 const SettingsContext = createContext({} as SettingsContextProps);
 
@@ -20,9 +21,16 @@ export function SettingsContextProvider({
 }: SettingsContextProviderProps) {
   const [disableScroll, setDisableScroll] = useState(false);
   const [firstLoad, setFirstLoad] = useState(true);
+  const [apiConnected] = useState(false);
   return (
     <SettingsContext.Provider
-      value={{ disableScroll, setDisableScroll, firstLoad, setFirstLoad }}
+      value={{
+        disableScroll,
+        setDisableScroll,
+        firstLoad,
+        setFirstLoad,
+        apiConnected,
+      }}
     >
       {children}
     </SettingsContext.Provider>

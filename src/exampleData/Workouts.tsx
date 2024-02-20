@@ -2,11 +2,12 @@ import { WorkoutData } from "../models/WorkoutData";
 import BenchpressImage from "../images/Benchpress.jpg";
 import PushWorkoutImage from "../images/PushWorkout.jpg";
 import PullWorkoutImage from "../images/PullWorkout.jpg";
+import LegsWorkoutImage from "../images/LegsWorkout.jpg";
 
 const FullBodyWorkout: WorkoutData = {
   name: "Full body workout",
   description:
-    "Comprehensive full body workout targeting multiple muscle groups.",
+    "Comprehensive full body workout designed to target multiple muscle groups. Achieve a balanced physique with a mix of upper and lower body exercises, promoting overall strength and endurance.",
   image: BenchpressImage,
   difficulty: 4,
   target: "Full Body",
@@ -24,7 +25,8 @@ const FullBodyWorkout: WorkoutData = {
 };
 const PushWorkout: WorkoutData = {
   name: "Push Workout",
-  description: "Push workout targeting Chest, Triceps, and Shoulders.",
+  description:
+    "Intense Push Workout focusing on Chest, Triceps, and Shoulders. Strengthen your upper body and achieve a sculpted physique with this challenging push-focused regimen.",
   image: PushWorkoutImage,
   difficulty: 3,
   target: "Chest, Triceps, Shoulders",
@@ -40,7 +42,8 @@ const PushWorkout: WorkoutData = {
 };
 const PullWorkout: WorkoutData = {
   name: "Pull Workout",
-  description: "Pull workout targeting Back and Biceps.",
+  description:
+    "Engage your back and biceps with this effective Pull Workout. This routine targets key muscle groups for a well-defined upper body.",
   image: PullWorkoutImage,
   difficulty: 2,
   target: "Back, Biceps",
@@ -53,11 +56,26 @@ const PullWorkout: WorkoutData = {
     { name: "Preacher Curl", sets: "2", reps: "15" },
   ],
 };
+const LegsWorkout: WorkoutData = {
+  name: "Legs Workout",
+  description:
+    "Strengthen your lower body with this dynamic Legs Workout. Enhance your lower body strength and endurance, promoting overall athletic performance.",
+  image: LegsWorkoutImage,
+  difficulty: 4,
+  target: "Glutes, Quads, Hamstrings, Calves",
+  time: 80,
+  exercises: [
+    { name: "Barbell Squat", sets: "4", reps: "6-10" },
+    { name: "Hip Thrust", sets: "3", reps: "12" },
+    { name: "Bulgarian Split Squats", sets: "3", reps: "12" },
+    { name: "Lying Leg Curl", sets: "3", reps: "8-12" },
+    { name: "Calf Raise", sets: "3", reps: "15-20" },
+  ],
+};
 
 export const Workouts: WorkoutData[] = [
   FullBodyWorkout,
   PushWorkout,
   PullWorkout,
-  PushWorkout,
-  PushWorkout,
+  LegsWorkout,
 ];

@@ -97,6 +97,14 @@ function ProgressChart() {
                 ticks: {
                   color: "white",
                 },
+                title: {
+                  display: true,
+                  text: "Weight (kg)",
+                  color: "white",
+                  font: {
+                    size: 15,
+                  },
+                },
               },
             },
           }}

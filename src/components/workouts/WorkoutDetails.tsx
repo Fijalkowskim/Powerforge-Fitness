@@ -28,7 +28,7 @@ function WorkoutDetails({ workout, onExit }: Props) {
         <h1 className=" font-accent text-4xl text-action-500">
           {workout.name}
         </h1>
-        <p className="max-w-[80%] text-lg font-extralight leading-tight">
+        <p className="max-w-[80%] text-lg font-extralight normal-case leading-tight">
           {workout.description}
         </p>
         <div className="-mb-2 mt-2 flex  w-full gap-10 font-light opacity-80">

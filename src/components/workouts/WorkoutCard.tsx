@@ -28,7 +28,7 @@ function WorkoutCard({ workout, onClick }: Props) {
       <img
         src={workout.image}
         alt="Workout"
-        loading="eager"
+        loading="lazy"
         className="absolute inset-0 -z-10 h-full w-full object-cover grayscale"
       />
       <div className="absolute inset-0 -z-10 h-full w-full bg-black opacity-75 transition-opacity group-hover:opacity-60" />
@@ -48,7 +48,7 @@ function WorkoutCard({ workout, onClick }: Props) {
             <FaDotCircle className="opacity-30" />
           ))}
         </div>
-        <p className="text-sm">~{workout.time}min</p>
+        <p className="text-sm ">~{workout.time}min</p>
       </div>
     </motion.button>
   );
