@@ -3,10 +3,14 @@ import { motion } from "framer-motion";
 import { useTrackerContext } from "../../context/TrackerContext";
 import CustomButton from "../general/CustomButton";
 import { useSettingsContext } from "../../context/SettingsContext";
-
-function ProgressForm() {
+import { ProgressData } from "../../models/ProgressData";
+interface Props {
+  progressData?: ProgressData;
+}
+function ProgressForm(props: Props) {
   const [weight, setWeight] = useState("");
-  const { setPickedDate, AddProgress, pickedDate } = useTrackerContext();
+  const { setPickedDate, AddProgress, pickedDate, setOldProgressData } =
+    useTrackerContext();
   const { setDisableScroll } = useSettingsContext();
   useEffect(() => {
     setDisableScroll(true);
@@ -19,6 +23,7 @@ function ProgressForm() {
   const onExit = () => {
     setDisableScroll(false);
     setPickedDate(undefined);
+    setOldProgressData(undefined);
   };
 
   return (
@@ -38,7 +43,11 @@ function ProgressForm() {
           e.preventDefault();
           if (weight === "") return;
           try {
-            AddProgress({ date: pickedDate, weight: Number(weight) });
+            AddProgress({
+              date: pickedDate,
+              weight: Number(weight),
+              id: props.progressData?.id,
+            });
             onExit();
           } catch (err) {
             console.log(err);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DatePicker from "../components/progress-tracker/date-picker/DatePicker";
 import ProgressChart from "../components/progress-tracker/ProgressChart";
 import { useTrackerContext } from "../context/TrackerContext";
@@ -6,8 +6,11 @@ import { AnimatePresence } from "framer-motion";
 import ProgressForm from "../components/progress-tracker/ProgressForm";
 import { useSettingsContext } from "../context/SettingsContext";
 function ProgressPage() {
-  const { pickedDate } = useTrackerContext();
+  const { pickedDate, LoadProgresses } = useTrackerContext();
   const { apiConnected } = useSettingsContext();
+  useEffect(() => {
+    LoadProgresses();
+  }, []);
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-start p-2 text-center uppercase text-primary-50">
       <h1 className="mt-20 font-accent text-5xl text-action-500 sm:text-6xl">

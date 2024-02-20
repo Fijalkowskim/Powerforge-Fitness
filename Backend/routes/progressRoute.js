@@ -32,7 +32,13 @@ router.put("/:id", async (req, res) => {
       return res.status(400).send({ message: "Send all progress fields" });
     }
     const { id } = req.params;
-    const progress = await Progress.findByIdAndUpdate(id, req.body);
+    const options = { new: true };
+    const progress = await Progress.findOneAndUpdate(
+      { _id: id },
+      req.body,
+      options
+    );
+
     if (!progress) {
       return res.status(404).send({ message: "Progress not found" });
     }

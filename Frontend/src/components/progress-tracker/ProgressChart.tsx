@@ -14,7 +14,7 @@ function ProgressChart() {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   ChartJS.register(CategoryScale);
   const currentDate = new Date();
-  const { progressData, GetWeight } = useTrackerContext();
+  const { progressData, GetProgressByDate } = useTrackerContext();
   const [labels, setLabels] = useState<string[]>([]);
   const [data, setData] = useState<(number | undefined)[]>([]);
   const [chartType, setChartType] = useState<ChartType>(ChartType.Last30Days);
@@ -30,7 +30,8 @@ function ProgressChart() {
       const month = (newDate.getMonth() + 1).toString().padStart(2, "0");
       const day = newDate.getDate().toString().padStart(2, "0");
       newLabels.push(`${day}.${month}.${year}`);
-      newData.push(GetWeight(newDate));
+      const searchedProgress = GetProgressByDate(newDate);
+      newData.push(searchedProgress ? searchedProgress.weight : undefined);
     }
     setLabels(newLabels);
     setData(newData);

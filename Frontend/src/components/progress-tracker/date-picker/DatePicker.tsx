@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { daysInMonth } from "../../../helpers/helpers";
 import DayCard from "./DayCard";
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTrackerContext } from "../../../context/TrackerContext";
+import { ProgressData } from "../../../models/ProgressData";
 interface MonthData {
   month: number;
   year: number;
+}
+interface ProgressArrayData {
+  date: Date;
+  progressData: ProgressData | undefined;
 }
 const monthNames = [
   "January",
@@ -28,7 +33,21 @@ function DatePicker() {
     month: new Date().getMonth(),
     year: new Date().getFullYear(),
   });
-  const { GetWeight } = useTrackerContext();
+  const { GetProgressByDate, progressData } = useTrackerContext();
+  const [progressArray, setProgressArray] = useState<ProgressArrayData[]>([]);
+  useEffect(() => {
+    setProgressArray(
+      [...Array(daysInMonth(monthData.month + 1, monthData.year))].map(
+        (_, dayIndex) => {
+          const date = new Date(monthData.year, monthData.month, dayIndex + 1);
+          return {
+            date: date,
+            progressData: GetProgressByDate(date),
+          };
+        },
+      ),
+    );
+  }, [progressData, monthData]);
   return (
     <div className="flex w-full max-w-xl flex-col items-center justify-center gap-2 bg-primary-950/50 p-1 text-xl  normal-case text-primary-50 shadow-md sm:p-3 sm:text-2xl lg:w-fit lg:max-w-full">
       <div className="flex w-full items-center justify-between">
@@ -63,22 +82,9 @@ function DatePicker() {
       </div>
       <div className="grid w-full grid-cols-7 grid-rows-5 gap-1 sm:gap-2 lg:w-[450px]">
         <AnimatePresence>
-          {[...Array(daysInMonth(monthData.month + 1, monthData.year))].map(
-            (_, dayIndex) => {
-              const date = new Date(
-                monthData.year,
-                monthData.month,
-                dayIndex + 1,
-              );
-              return (
-                <DayCard
-                  key={dayIndex + 1}
-                  date={date}
-                  weight={GetWeight(date)}
-                />
-              );
-            },
-          )}
+          {progressArray.map((p, idx) => (
+            <DayCard key={idx} date={p.date} progressData={p.progressData} />
+          ))}
         </AnimatePresence>
       </div>
     </div>

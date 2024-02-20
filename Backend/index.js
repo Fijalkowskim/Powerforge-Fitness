@@ -2,13 +2,15 @@ import express from "express";
 import mongoose from "mongoose";
 import { PORT, mongoDBUrl } from "./config.js";
 import progressRoute from "./routes/progressRoute.js";
-
+import cors from "cors";
 const app = express();
 app.use(express.json());
-app.get(`/`, (req, res) => {
-  return res.status(200).send("App is working");
-});
 
+app.use(cors());
+
+app.get(`/`, (req, res) => {
+  return res.status(200).send("Powerforge fitness backend service");
+});
 app.use("/progress", progressRoute);
 
 mongoose
