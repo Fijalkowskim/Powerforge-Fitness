@@ -4,14 +4,22 @@ import { useTrackerContext } from "../../context/TrackerContext";
 import CustomButton from "../general/CustomButton";
 import { useSettingsContext } from "../../context/SettingsContext";
 import { ProgressData } from "../../models/ProgressData";
-interface Props {
-  progressData?: ProgressData;
-}
-function ProgressForm(props: Props) {
-  const [weight, setWeight] = useState("");
-  const { setPickedDate, AddProgress, pickedDate, setOldProgressData } =
-    useTrackerContext();
+
+function ProgressForm() {
+  const {
+    setPickedDate,
+    AddProgress,
+    pickedDate,
+    oldProgressData,
+    setOldProgressData,
+    DeleteProgress,
+  } = useTrackerContext();
   const { setDisableScroll } = useSettingsContext();
+
+  const [weight, setWeight] = useState(
+    oldProgressData ? oldProgressData.weight.toString() : "",
+  );
+
   useEffect(() => {
     setDisableScroll(true);
   }, [setDisableScroll]);
@@ -41,12 +49,16 @@ function ProgressForm(props: Props) {
         className="relative z-10 flex min-h-32 min-w-96 flex-col items-center justify-center gap-1 border-2 border-action-500 bg-primary-950 p-4 shadow-md"
         onSubmit={(e) => {
           e.preventDefault();
-          if (weight === "") return;
+          if (weight === "") {
+            DeleteProgress(oldProgressData);
+            onExit();
+            return;
+          }
           try {
             AddProgress({
               date: pickedDate,
               weight: Number(weight),
-              id: props.progressData?.id,
+              id: oldProgressData?.id,
             });
             onExit();
           } catch (err) {
@@ -61,7 +73,6 @@ function ProgressForm(props: Props) {
           autoFocus
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
-          required
           className="mb-3 px-3 py-2 text-primary-950 placeholder-primary-950/80"
         />
         <CustomButton type="submit">confirm</CustomButton>

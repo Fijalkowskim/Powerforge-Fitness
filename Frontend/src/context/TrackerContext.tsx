@@ -2,12 +2,14 @@ import { ReactNode, createContext, useContext, useState } from "react";
 import { ProgressData } from "../models/ProgressData";
 import { compareDates } from "../helpers/helpers";
 import api from "../api/api";
+import { IoMdReturnLeft } from "react-icons/io";
 interface TrackerContextProviderProps {
   children: ReactNode;
 }
 interface TrackerContextProps {
   progressData: ProgressData[];
   AddProgress: (newData: ProgressData) => void;
+  DeleteProgress: (progressData: ProgressData | undefined) => void;
   GetProgressByDate: (date: Date) => ProgressData | undefined;
   pickedDate: Date | undefined;
   setPickedDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
@@ -64,7 +66,6 @@ export function TrackerContextProvider({
       api
         .put(`/progress/${oldData.id}`, body)
         .then((res) => {
-          console.log(res.data.data);
           const resData: ProgressData = {
             date: new Date(res.data.data.date),
             weight: res.data.data.weight,
@@ -98,6 +99,19 @@ export function TrackerContextProvider({
         });
     }
   };
+  const DeleteProgress = (progressData: ProgressData | undefined) => {
+    if (!progressData) {
+      return;
+    }
+    api
+      .delete(`/progress/${progressData.id}`)
+      .then((res) => {
+        setProgressData((prev) => prev.filter((p) => p.id !== progressData.id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const GetProgressByDate = (date: Date) => {
     const progress = progressData.find((p) => compareDates(p.date, date));
     return progress;
@@ -111,6 +125,7 @@ export function TrackerContextProvider({
       value={{
         progressData,
         AddProgress,
+        DeleteProgress,
         GetProgressByDate,
         pickedDate,
         setPickedDate,
