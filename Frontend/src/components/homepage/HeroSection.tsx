@@ -70,7 +70,7 @@ function HeroSection() {
           Explore our workouts, track your progress and become better version of
           yourself
         </p>
-        <Link to="/workouts">
+        <Link to="/Powerforge-Fitness/workouts">
           <CustomButton variant={"darker"} className="py-2">
             Check workouts
           </CustomButton>
