@@ -5,6 +5,7 @@ import { WorkoutData } from "../models/WorkoutData";
 import WorkoutDetails from "../components/workouts/WorkoutDetails";
 import { AnimatePresence } from "framer-motion";
 import { useSettingsContext } from "../context/SettingsContext";
+import { motion } from "framer-motion";
 
 function WorkoutsPage() {
   const [selectedWorkout, setSelectedWorkout] = useState<WorkoutData>();
@@ -15,23 +16,40 @@ function WorkoutsPage() {
       `}
     >
       <h1
-        className="font-accent text-6xl  tracking-wide drop-shadow-lg"
+        className="font-accent text-6xl  tracking-wide text-action-500 drop-shadow-lg"
         style={{ textShadow: "1px 1px black" }}
       >
         Our workouts
       </h1>
-      <div className="container flex flex-wrap items-center justify-center gap-8">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="container flex flex-wrap items-center justify-center gap-8"
+        transition={{ staggerChildren: 2, delayChildren: 3 }}
+      >
         {Workouts.map((workout, idx) => (
-          <WorkoutCard
+          <motion.div
             key={idx}
-            workout={workout}
-            onClick={(workout: WorkoutData) => {
-              setSelectedWorkout(workout);
-              setDisableScroll(true);
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{
+              delay: 0.3 + 0.1 * idx,
+              type: "spring",
+              mass: 0.9,
+              stiffness: 118,
+              damping: 13,
             }}
-          />
+          >
+            <WorkoutCard
+              workout={workout}
+              onClick={(workout: WorkoutData) => {
+                setSelectedWorkout(workout);
+                setDisableScroll(true);
+              }}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
       <AnimatePresence>
         {selectedWorkout && (
           <WorkoutDetails

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomButton from "../general/CustomButton";
 import BMIIndicatorRange from "./BMIIndicatorRange";
+import { motion } from "framer-motion";
 export interface BMIIndicator {
   rangeTo: number;
   status: string;
@@ -58,7 +59,11 @@ function BMICalculator() {
   };
 
   return (
-    <div className="container z-10 flex flex-col items-center justify-center gap-1 border-4 border-primary-50 bg-primary-950/80 p-4 text-center uppercase text-primary-50">
+    <motion.div
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1, transition: { delay: 0.3 } }}
+      className="container z-10 flex flex-col items-center justify-center gap-1 border-4 border-primary-50 bg-primary-950/80 p-4 text-center uppercase text-primary-50"
+    >
       <h1 className="font-accent text-6xl">Calculate your BMI</h1>
       <p className="max-w-[40%] opacity-90">
         The body mass index (BMI) is a measure that uses your height and weight
@@ -136,7 +141,7 @@ function BMICalculator() {
           </div>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

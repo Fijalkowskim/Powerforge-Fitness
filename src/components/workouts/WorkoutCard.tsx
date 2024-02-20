@@ -28,6 +28,7 @@ function WorkoutCard({ workout, onClick }: Props) {
       <img
         src={workout.image}
         alt="Workout"
+        loading="eager"
         className="absolute inset-0 -z-10 h-full w-full object-cover grayscale"
       />
       <div className="absolute inset-0 -z-10 h-full w-full bg-black opacity-75 transition-opacity group-hover:opacity-60" />
