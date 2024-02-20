@@ -14,8 +14,10 @@ function ContactPage() {
         alt="People train"
       />
       <div className="absolute inset-0 -z-10 h-full w-full bg-black/70" />
-      <h1 className="mt-16 font-accent text-6xl text-action-500">Contact us</h1>
-      <p className="mb-3 max-w-3xl">
+      <h1 className="mt-16 font-accent text-5xl text-action-500 sm:text-6xl">
+        Contact us
+      </h1>
+      <p className="mb-3 max-w-3xl text-sm sm:text-base">
         We value your feedback! Whether you have suggestions, specific workouts
         you'd like to see, or ideas for new features, please don't hesitate to
         get in touch with us. Your input helps us create a better fitness

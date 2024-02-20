@@ -59,15 +59,19 @@ function BMICalculator() {
   };
 
   return (
-    <motion.div className="container z-10 flex flex-col items-center justify-center gap-1 border-4 border-primary-50 bg-primary-950/80 p-4 text-center uppercase text-primary-50">
-      <h1 className="font-accent text-6xl">Calculate your BMI</h1>
-      <p className="max-w-[40%] opacity-90">
+    <motion.div className="container z-10 flex h-full flex-col items-center justify-center gap-1 overflow-y-scroll border-primary-50 bg-primary-950/80 p-4 text-center uppercase text-primary-50 sm:mt-0 sm:h-auto sm:border-4 lg:overflow-auto">
+      <h1
+        className={`${bmi && bmiIndicator && "mt-20"} font-accent text-5xl sm:mt-0 sm:text-6xl`}
+      >
+        Calculate your BMI
+      </h1>
+      <p className="text-sm opacity-90 sm:max-w-[40%] sm:text-base">
         The body mass index (BMI) is a measure that uses your height and weight
         to work out if your weight is healthy.
       </p>
       <form
         id="bmi-form"
-        className="mb-3 flex flex-row items-center justify-center gap-4"
+        className="mb-3 flex flex-col items-center justify-center gap-4 sm:flex-row"
         onSubmit={(e) => {
           e.preventDefault();
           if (weight === "" || height === "") return;
@@ -111,9 +115,10 @@ function BMICalculator() {
         Calculate
       </CustomButton>
       {bmi && bmiIndicator && (
-        <div className="flex w-full max-w-[80%]  flex-row items-center justify-between gap-1">
-          <div className="flex flex-col items-center justify-center">
-            <span className="font-accent text-5xl">
+        <div className="flex w-full flex-col items-center justify-between gap-3 sm:flex-col lg:max-w-[80%]">
+          <div className="flex w-full flex-col items-center justify-center">
+            <div className="mb-3 mt-2 h-[0.1px] w-full bg-primary-50" />
+            <span className="font-accent text-4xl lg:text-5xl">
               Your bmi:{" "}
               <span className="text-action-500">{bmi.toFixed(1)}</span>
             </span>
@@ -121,7 +126,11 @@ function BMICalculator() {
               {bmiIndicator.status}
             </p>
           </div>
-          <p className="max-w-[50%] font-light">{bmiIndicator.description}</p>
+          <div className=" h-[0.1px] w-full bg-primary-50 sm:hidden" />
+          <p className="font-light sm:max-w-[50%]">
+            {bmiIndicator.description}
+          </p>
+          <div className=" h-[0.1px] w-full bg-primary-50 sm:hidden" />
           <div className=" flex flex-shrink-0 flex-col items-start justify-center">
             <h1>BMI range indication</h1>
             {BMIIndicatorRanges.map((r, idx) => (
@@ -135,6 +144,7 @@ function BMICalculator() {
               />
             ))}
           </div>
+          <div className="mb-3 mt-2 hidden h-[0.1px] w-full bg-primary-50 sm:block" />
         </div>
       )}
     </motion.div>

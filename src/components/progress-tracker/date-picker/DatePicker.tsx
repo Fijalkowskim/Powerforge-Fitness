@@ -30,7 +30,7 @@ function DatePicker() {
   });
   const { GetWeight } = useTrackerContext();
   return (
-    <div className=" flex flex-col items-start justify-center gap-2 bg-primary-950/50 p-3 text-2xl normal-case text-primary-50 shadow-md">
+    <div className="flex w-full max-w-xl flex-col items-center justify-center gap-2 bg-primary-950/50 p-1 text-xl  normal-case text-primary-50 shadow-md sm:p-3 sm:text-2xl lg:w-fit lg:max-w-full">
       <div className="flex w-full items-center justify-between">
         <motion.button
           whileHover={{ x: -1 }}
@@ -61,7 +61,7 @@ function DatePicker() {
           <FaAngleDoubleRight />
         </motion.button>
       </div>
-      <div className="grid w-[500px] grid-cols-7 grid-rows-5 gap-2">
+      <div className="grid w-full grid-cols-7 grid-rows-5 gap-1 sm:gap-2 lg:w-[450px]">
         <AnimatePresence>
           {[...Array(daysInMonth(monthData.month + 1, monthData.year))].map(
             (_, dayIndex) => {

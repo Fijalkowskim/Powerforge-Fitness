@@ -9,16 +9,16 @@ function ProgressPage() {
   const { pickedDate } = useTrackerContext();
   const { apiConnected } = useSettingsContext();
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-start uppercase text-primary-50">
-      <h1 className="mt-20 font-accent text-6xl text-action-500">
+    <div className="relative flex min-h-screen flex-col items-center justify-start p-2 text-center uppercase text-primary-50">
+      <h1 className="mt-20 font-accent text-5xl text-action-500 sm:text-6xl">
         Track your weight
       </h1>
-      <p className=" mb-2 max-w-4xl text-center">
+      <p className="mb-2 mt-1 max-w-4xl text-center">
         Log your weight by selecting dates on the calendar. Dive into insightful
         graphs to gain a deeper understanding of your fitness progress.
       </p>
 
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex w-full flex-col items-center justify-center gap-4 lg:w-fit lg:flex-row">
         <DatePicker />
         <ProgressChart />
       </div>

@@ -3,6 +3,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import { CategoryScale, scales } from "chart.js";
 import { useTrackerContext } from "../../context/TrackerContext";
+import { useMediaQuery } from "react-responsive";
 
 enum ChartType {
   Last30Days,
@@ -10,6 +11,7 @@ enum ChartType {
 }
 
 function ProgressChart() {
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   ChartJS.register(CategoryScale);
   const currentDate = new Date();
   const { progressData, GetWeight } = useTrackerContext();
@@ -34,7 +36,7 @@ function ProgressChart() {
     setData(newData);
   }, [progressData, chartType]);
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex w-full flex-col items-center justify-center sm:w-fit">
       <h1 className="text-action-500">Choose chart type</h1>
       <form
         onSubmit={(e) => {
@@ -66,7 +68,7 @@ function ProgressChart() {
           </label>
         </div>
       </form>
-      <div className="mt-2 aspect-square w-[500px]">
+      <div className="mt-2 aspect-square w-full sm:w-[500px]">
         <Chart
           type={"line"}
           data={{
@@ -98,7 +100,7 @@ function ProgressChart() {
                   color: "white",
                 },
                 title: {
-                  display: true,
+                  display: !isMobile,
                   text: "Weight (kg)",
                   color: "white",
                   font: {
