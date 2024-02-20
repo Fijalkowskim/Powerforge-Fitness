@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Powerforge-Fitness/static/css/main.168b6f5a.css",
-    "main.js": "/Powerforge-Fitness/static/js/main.31811b69.js",
+    "main.js": "/Powerforge-Fitness/static/js/main.22b89e98.js",
     "static/media/Benchpress.jpg": "/Powerforge-Fitness/static/media/Benchpress.c79d0a4b43f0f14ae72d.jpg",
     "static/media/WeightImage.jpg": "/Powerforge-Fitness/static/media/WeightImage.6d7edd18375e50259e77.jpg",
     "static/media/HeroImage.jpg": "/Powerforge-Fitness/static/media/HeroImage.2ee1ed17bc8a3647653d.jpg",
@@ -14,10 +14,10 @@
     "static/media/PullWorkout.jpg": "/Powerforge-Fitness/static/media/PullWorkout.c65f7cfe2fe5adb2121a.jpg",
     "index.html": "/Powerforge-Fitness/index.html",
     "main.168b6f5a.css.map": "/Powerforge-Fitness/static/css/main.168b6f5a.css.map",
-    "main.31811b69.js.map": "/Powerforge-Fitness/static/js/main.31811b69.js.map"
+    "main.22b89e98.js.map": "/Powerforge-Fitness/static/js/main.22b89e98.js.map"
   },
   "entrypoints": [
     "static/css/main.168b6f5a.css",
-    "static/js/main.31811b69.js"
+    "static/js/main.22b89e98.js"
   ]
 }
