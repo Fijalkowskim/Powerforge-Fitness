@@ -23,12 +23,18 @@ function App() {
         <ScrollToTop />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/bmi" element={<BMIPage />} />
-          <Route path="/workouts" element={<WorkoutsPage />} />
-          <Route path="/tracker" element={<ProgressPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/Powerforge-Fitness" element={<Homepage />} />
+          <Route path="/Powerforge-Fitness/bmi" element={<BMIPage />} />
+          <Route
+            path="/Powerforge-Fitness/workouts"
+            element={<WorkoutsPage />}
+          />
+          <Route
+            path="/Powerforge-Fitness/tracker"
+            element={<ProgressPage />}
+          />
+          <Route path="/Powerforge-Fitness/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/Powerforge-Fitness" />} />
         </Routes>
         <Footer />
       </BrowserRouter>

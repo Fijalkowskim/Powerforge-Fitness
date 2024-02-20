@@ -7,11 +7,11 @@ import { GoX } from "react-icons/go";
 import { useSettingsContext } from "../../context/SettingsContext";
 
 const navlinks = [
-  { name: "Home", to: "/" },
-  { name: "Workouts", to: "/workouts" },
-  { name: "Progress tracker", to: "/tracker" },
-  { name: "BMI Calculator", to: "/bmi" },
-  { name: "Contact", to: "/contact" },
+  { name: "Home", to: "/Powerforge-Fitness" },
+  { name: "Workouts", to: "/Powerforge-Fitness/workouts" },
+  { name: "Progress tracker", to: "/Powerforge-Fitness/tracker" },
+  { name: "BMI Calculator", to: "/Powerforge-Fitness/bmi" },
+  { name: "Contact", to: "/Powerforge-Fitness/contact" },
 ];
 function Navbar() {
   const ref = useRef(null);
