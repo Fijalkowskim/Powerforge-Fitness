@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Powerforge-Fitness/static/css/main.168b6f5a.css",
+    "main.js": "/Powerforge-Fitness/static/js/main.881f9db4.js",
+    "static/media/Benchpress.jpg": "/Powerforge-Fitness/static/media/Benchpress.c79d0a4b43f0f14ae72d.jpg",
+    "static/media/WeightImage.jpg": "/Powerforge-Fitness/static/media/WeightImage.6d7edd18375e50259e77.jpg",
+    "static/media/HeroImage.jpg": "/Powerforge-Fitness/static/media/HeroImage.2ee1ed17bc8a3647653d.jpg",
+    "static/media/BmiBackground.jpg": "/Powerforge-Fitness/static/media/BmiBackground.b949a05d0ccdc87751d5.jpg",
+    "static/media/PushWorkout.jpg": "/Powerforge-Fitness/static/media/PushWorkout.cdb3a1b4cb45c1430ecd.jpg",
+    "static/media/LegsWorkout.jpg": "/Powerforge-Fitness/static/media/LegsWorkout.123bbfb1fad0f8fc3814.jpg",
+    "static/media/ProgressImage.jpg": "/Powerforge-Fitness/static/media/ProgressImage.57a2ffe1ffd4b60d688e.jpg",
+    "static/media/ContactImage.jpg": "/Powerforge-Fitness/static/media/ContactImage.9908dc7c05175c652cfe.jpg",
+    "static/media/BgTexture.jpg": "/Powerforge-Fitness/static/media/BgTexture.7f093bf534396d9ed6f2.jpg",
+    "static/media/PullWorkout.jpg": "/Powerforge-Fitness/static/media/PullWorkout.c65f7cfe2fe5adb2121a.jpg",
+    "index.html": "/Powerforge-Fitness/index.html",
+    "main.168b6f5a.css.map": "/Powerforge-Fitness/static/css/main.168b6f5a.css.map",
+    "main.881f9db4.js.map": "/Powerforge-Fitness/static/js/main.881f9db4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.168b6f5a.css",
+    "static/js/main.881f9db4.js"
+  ]
+}
