@@ -1,5 +1,8 @@
 # PowerForge Fitness
 This project represents a React-based web application designed to assist individuals in their fitness journey. Whether you're looking for workout routines, progress tracking, or a BMI calculator, PowerForge Fitness has you covered.
+
+# Website: https://fijalkowskim.github.io/
+
 ![image](https://github.com/Fijalkowskim/Powerforge-Fitness/assets/91847461/8f568b16-81c2-4baa-885c-fa9c3befd98a)
 ![image](https://github.com/Fijalkowskim/Powerforge-Fitness/assets/91847461/d800dcb1-39e9-44ef-94d9-ca83a03a4185)
 ![image](https://github.com/Fijalkowskim/Powerforge-Fitness/assets/91847461/855f3f67-38c9-42e2-bd93-d0bf0166fe34)
