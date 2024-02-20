@@ -9,6 +9,7 @@ import WorkoutsPage from "./pages/WorkoutsPage";
 import { useSettingsContext } from "./context/SettingsContext";
 import { useEffect } from "react";
 import ProgressPage from "./pages/ProgressPage";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   const { disableScroll } = useSettingsContext();
@@ -26,6 +27,7 @@ function App() {
           <Route path="/bmi" element={<BMIPage />} />
           <Route path="/workouts" element={<WorkoutsPage />} />
           <Route path="/tracker" element={<ProgressPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
